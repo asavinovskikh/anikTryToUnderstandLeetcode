@@ -3,6 +3,7 @@ package com.sov.anik.leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
+//https://leetcode.com/problems/palindrome-number/
 public class PalindromeNumber {
 
         public boolean isPalindrome(int x) {
