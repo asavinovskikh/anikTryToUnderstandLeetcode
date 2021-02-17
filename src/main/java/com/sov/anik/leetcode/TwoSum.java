@@ -10,7 +10,7 @@ public class TwoSum {
 
     public int[] twoSum(int[] nums, int target) {
         int[] a = new int [2];
-
+        
         List<Integer> arrr = Arrays.stream(nums)
                 .boxed()
                // .filter(x -> x < target)
