@@ -16,7 +16,7 @@ public class TheeSum {
         public List<Integer> threeCurrentSum(int[] nums, int i, int sum) {
             List<Integer> currentResult = new ArrayList<>();
             for (int j = 0; j < nums.length; j++) {
-                TwoSum.getSumm()
+               // TwoSum.getSumm();
 
             }
             return currentResult;
