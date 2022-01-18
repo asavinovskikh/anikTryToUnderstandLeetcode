@@ -1,7 +1,7 @@
 package com.sov.anik.leetcode
 
-import org.junit.Assert
-import org.junit.Test
+import com.sun.tools.javac.util.Assert
+
 
 //https://leetcode.com/problems/reverse-integer/
 class ReverseInteger {
