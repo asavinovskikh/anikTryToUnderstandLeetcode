@@ -9,33 +9,42 @@ public class SearchInsertPosition {
         if (nums[0] > target) {
             return 0;
         }
-        if (nums[size-1] < target) {
+        if (nums[size -1] < target) {
             return size;
         }
-        do {
+
+        while(currentDelta > 0) {
+            currentDelta /=2;
             if (nums[i] == target) {
                 return i;
             }
-            if (i+1 < size  && nums[i+1] == target) {
-                return i+1;
-            }
-
-            if (nums[i] < target) {
-                i = i + currentDelta;
-            }
             if (nums[i] > target) {
-                i = i - currentDelta;
+                if (nums[i+1] < target) {
+                    return i;
+                }
+                if (nums[i+1] == target) {
+                    return i + 1;
+                }
+                else {
+                    i += currentDelta;
+                }
             }
-            currentDelta = currentDelta / 2;
-
-        } while (i < size && i > 0 && currentDelta > 0);
-        if (i+1 == size && nums[i] < target) {
-            return size;
+            if (nums[i] < target) {
+                if (nums[i+1] > target) {
+                    return i;
+                }
+                if (nums[i+1] == target) {
+                    return i + 1;
+                }
+                else {
+                    i -= currentDelta;
+                }
+            }
+            if (i <= 0 || i >= size-1) {
+                return i;
+            }
         }
-        if (i+1 < size && nums[i+1] == target) {
-            return i+1;
-        }
-      return i;
+        return i;
     }
 
     public static void main(String[] args) {
