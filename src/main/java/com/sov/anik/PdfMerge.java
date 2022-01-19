@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 
-public class pdfmerge {
+public class PdfMerge {
 
 
     public static void main(String[] args) throws Exception{
