@@ -1,43 +1,23 @@
 package com.sov.anik.leetcode;
 
+import java.util.Collections;
+
 public class SearchInsertPosition {
 
     public int searchInsert(int[] nums, int target) {
         int size = nums.length;
-        int i = size / 2;
-        int currentDelta = i;
-        if (nums[0] > target) {
-            return 0;
-        }
-        if (nums[size -1] < target) {
-            return size;
-        }
-
-        while(currentDelta > 0) {
-
-            if (nums[i] == target) {
+        for ( int i = 0; i < size; i++) {
+            if (nums[i] >= target) {
                 return i;
             }
-            if (nums[i] > target) {
-                    i -= currentDelta;
-            }
-            if (nums[i] < target) {
-                if (nums[i+1] >= target) {
-                    return i+1;
-                }
-                else {
-                    i += currentDelta;
-                }
-            }
-            if (i <= 0 || i > size-1) {
-                return i;
-            }
-            currentDelta /=2;
+
         }
-        return i;
+        return size;
+
     }
 
     public static void main(String[] args) {
+        Collections.s
         SearchInsertPosition sip = new SearchInsertPosition();
         int [] nums = new int [] {1,3,5,6};
         System.out.println(sip.searchInsert(nums, 5));
