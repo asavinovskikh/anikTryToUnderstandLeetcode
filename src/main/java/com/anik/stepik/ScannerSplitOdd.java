@@ -1,4 +1,4 @@
-package com.sov.anik.stepik;
+package com.anik.stepik;
 import java.util.Scanner;
 
 public class ScannerSplitOdd {
@@ -28,7 +28,7 @@ public class ScannerSplitOdd {
             System.out.print(result);
             return;
         }
-    }
+
 
 
 

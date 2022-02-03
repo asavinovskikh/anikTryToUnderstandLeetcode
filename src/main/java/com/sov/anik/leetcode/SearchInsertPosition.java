@@ -1,7 +1,5 @@
 package com.sov.anik.leetcode;
 
-import java.util.Collections;
-
 public class SearchInsertPosition {
 
     public int searchInsert(int[] nums, int target) {
@@ -17,7 +15,6 @@ public class SearchInsertPosition {
     }
 
     public static void main(String[] args) {
-        Collections.s
         SearchInsertPosition sip = new SearchInsertPosition();
         int [] nums = new int [] {1,3,5,6};
         System.out.println(sip.searchInsert(nums, 5));
