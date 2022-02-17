@@ -48,7 +48,6 @@ public class PermutationInString {
     private String spr(Set<Integer> ss) {
         StringBuilder sres = new StringBuilder();
         for(Integer it : ss) {
-   //         System.out.print(it + " ");
             sres.append(it + " ");
         }
         return sres.toString();
