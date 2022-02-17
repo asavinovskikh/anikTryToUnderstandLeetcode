@@ -8,6 +8,12 @@ public class PermutationInString {
         char [] a = s1.toCharArray();
         char [] b = s2.toCharArray();
 
+        HashMap<Integer, Integer> letters = new HashMap<>();
+        for(int i = 0; i < 26; i++) {
+            letters.put(0,0);
+        }
+        //todo put some amount of elements
+
         List<Integer> st = new ArrayList();
         Set<Integer> s = new HashSet();
         Set<Integer> d  = new HashSet();
@@ -32,18 +38,14 @@ public class PermutationInString {
         s.addAll(st.subList(0, d.size()));
         for (int i = 0; i < n+1; i++) {
             s.addAll(st.subList(i, i+ d.size()));
-           // System.out.println("COMPARE " + spr(s) +" AND " + spr(d));
             if (s.containsAll(d) && d.containsAll(s)) {
                 return true;
             }
             s.clear();
-//            s.addAll(st.subList(i, i+ d.size()));
-            //s.remove(st.get(i));
-            //s.add(st.get(i + n));
-
         }
         return false;
     }
+
 
     private String spr(Set<Integer> ss) {
         StringBuilder sres = new StringBuilder();
