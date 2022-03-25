@@ -6,8 +6,13 @@ public class PermutationInString567 {
 
     public static boolean permutation(String s1, String s2) {
         int [] a = new int[26];
-        char [] bigString = s1.toCharArray();
-        char [] smallString = s2.toCharArray();
+        //we want first string as bigger than another
+        char[] bigString = s1.toCharArray();
+        char[] smallString = s2.toCharArray();
+        if (s1.length() < s2.length()) {
+            bigString = s1.toCharArray();
+            smallString = s2.toCharArray();
+        }
         List<Integer> massofletters = new ArrayList<>();
 
         for(int i = 0; i < smallString.length; i++) {
