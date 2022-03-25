@@ -9,10 +9,14 @@ class PermutationInString567Test {
 
     @Test
     public void PermutationTest(){
+        //проверка что надо начинать не с текущего зафейленного
         assertEquals(permutation("dcda", "adc"), true);
+        //буквы есть но в произвольном порядке
         assertEquals(permutation("qwert", "rew"), true);
         assertEquals(permutation("eidbaooo", "ab"), true);
         assertEquals(permutation("skirt", "rps"), false);
         assertEquals(permutation("qwert", "qwrt"), false);
+        //проверка если в слове есть дубли
+        assertEquals(permutation("oooolleoooleh", "hello"), false);
     }
 }

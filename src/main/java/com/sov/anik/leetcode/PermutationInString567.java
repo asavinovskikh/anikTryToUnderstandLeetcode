@@ -8,21 +8,26 @@ public class PermutationInString567 {
         int [] a = new int[26];
         char [] bigString = s1.toCharArray();
         char [] smallString = s2.toCharArray();
-        Set<Integer> massofletters = new HashSet<>();
+        List<Integer> massofletters = new ArrayList<>();
+
         for(int i = 0; i < smallString.length; i++) {
-            a[smallString[i]-97] = 1;
+            a[smallString[i]-97] = a[smallString[i]-97] + 1;
             massofletters.add(smallString[i]-97);
         }
-        Set<Integer> copyofcopy = new HashSet<>();
+        List<Integer> floatMass = new ArrayList<>(massofletters);
+        List<Integer> copyofcopy = new ArrayList<>();
         for(int i = 0; i < bigString.length; i++)
-            if (massofletters.contains(bigString[i]-97)) {
+            if (massofletters.contains(bigString[i]-97) && floatMass.contains(bigString[i]-97)) {
                 copyofcopy.add(bigString[i]-97);
-                if (copyofcopy.containsAll(massofletters)) {
+                floatMass.remove(Integer.valueOf(bigString[i]-97));
+                if (copyofcopy.containsAll(massofletters) && floatMass.isEmpty()) {
                     return true;
                 }
+
             } else {
-                massofletters.addAll(massofletters);
                 copyofcopy.clear();
+                floatMass.clear();
+                floatMass.addAll(massofletters);
             }
         if (massofletters.isEmpty()) {
             return true;
