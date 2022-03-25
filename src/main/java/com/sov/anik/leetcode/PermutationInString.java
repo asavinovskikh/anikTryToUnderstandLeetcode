@@ -4,6 +4,18 @@ import java.util.*;
 
 public class PermutationInString {
 
+    public static boolean permutation(String s1, String s2) {
+        int [] a = new int[26];
+        boolean result = false;
+        char [] bigString = s1.toCharArray();
+        char [] smallString = s2.toCharArray();
+        for(int i = 0; i < smallString.length; i++) {
+            a[smallString[i]-97] = 1;
+        }
+
+        return result;
+    }
+
     public boolean checkInclusion(String s1, String s2) {
         char [] a = s1.toCharArray();
         char [] b = s2.toCharArray();
@@ -57,6 +69,7 @@ public class PermutationInString {
 
     public static void main(String[] args) {
         PermutationInString pm = new PermutationInString();
+        System.out.println(permutation("dcda", "adc"));
         System.out.println(pm.checkInclusion("dcda", "adc"));
         System.out.println(pm.checkInclusion("qwert", "rew"));
         System.out.println(pm.checkInclusion("eidbaooo", "ab"));
