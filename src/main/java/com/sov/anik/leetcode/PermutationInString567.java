@@ -2,18 +2,32 @@ package com.sov.anik.leetcode;
 
 import java.util.*;
 
-public class PermutationInString {
+public class PermutationInString567 {
 
     public static boolean permutation(String s1, String s2) {
         int [] a = new int[26];
-        boolean result = false;
         char [] bigString = s1.toCharArray();
         char [] smallString = s2.toCharArray();
+        Set<Integer> massofletters = new HashSet<>();
         for(int i = 0; i < smallString.length; i++) {
             a[smallString[i]-97] = 1;
+            massofletters.add(smallString[i]-97);
         }
-
-        return result;
+        Set<Integer> copyofcopy = new HashSet<>();
+        for(int i = 0; i < bigString.length; i++)
+            if (massofletters.contains(bigString[i]-97)) {
+                copyofcopy.add(bigString[i]-97);
+                if (copyofcopy.containsAll(massofletters)) {
+                    return true;
+                }
+            } else {
+                massofletters.addAll(massofletters);
+                copyofcopy.clear();
+            }
+        if (massofletters.isEmpty()) {
+            return true;
+        }
+        return false;
     }
 
     public boolean checkInclusion(String s1, String s2) {
@@ -68,12 +82,12 @@ public class PermutationInString {
     }
 
     public static void main(String[] args) {
-        PermutationInString pm = new PermutationInString();
+        PermutationInString567 pm = new PermutationInString567();
         System.out.println(permutation("dcda", "adc"));
-        System.out.println(pm.checkInclusion("dcda", "adc"));
-        System.out.println(pm.checkInclusion("qwert", "rew"));
-        System.out.println(pm.checkInclusion("eidbaooo", "ab"));
-        System.out.println(pm.checkInclusion("skirt", "rps"));
-        System.out.println(pm.checkInclusion("qwert", "qwrt"));
+      //  System.out.println(pm.checkInclusion("dcda", "adc"));
+        System.out.println(permutation("qwert", "rew"));
+        System.out.println(permutation("eidbaooo", "ab"));
+        System.out.println(permutation("skirt", "rps"));
+        System.out.println(permutation("qwert", "qwrt"));
     }
 }
