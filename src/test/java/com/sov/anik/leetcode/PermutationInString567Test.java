@@ -11,6 +11,8 @@ class PermutationInString567Test {
     public void PermutationTest(){
         //проверка что надо начинать не с текущего зафейленного
         assertEquals(permutation("dcda", "adc"), true);
+        //оказывается нам еще не важно в каком это порядке
+        assertEquals(permutation("adc", "dcda"), true);
         //буквы есть но в произвольном порядке
         assertEquals(permutation("qwert", "rew"), true);
         assertEquals(permutation("eidbaooo", "ab"), true);
