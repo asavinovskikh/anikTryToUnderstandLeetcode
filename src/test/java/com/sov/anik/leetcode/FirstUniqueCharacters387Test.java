@@ -13,4 +13,18 @@ class FirstUniqueCharacters387Test {
         String tests = new String("leetcode");
         assertEquals(0, firstUniqueChar(tests));
     }
+
+    @Test
+    void firstUniqueTest() {
+
+        String tests = new String("loveleetcode");
+        assertEquals(2, firstUniqueChar(tests));
+    }
+
+    @Test
+    void negativeTest() {
+
+        String tests = new String("aabb");
+        assertEquals(-1, firstUniqueChar(tests));
+    }
 }

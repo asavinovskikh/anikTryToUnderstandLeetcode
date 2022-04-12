@@ -6,7 +6,6 @@ import java.util.Set;
 public class FirstUniqueCharacters387 {
 
 //    https://leetcode.com/problems/first-unique-character-in-a-string/
-
     public static int firstUniqueChar(String s) {
 
         int[] alphabet = new int[26];
@@ -14,19 +13,20 @@ public class FirstUniqueCharacters387 {
 
         for (int i = 0; i < 26; i++) {
             alphabet[i] = Integer.MAX_VALUE;
-            is.add(i + 'a');
+            is.add(i);
         }
         char [] a = s.toCharArray();
         for(int i = 0;  i< a.length; i++) {
             if (is.isEmpty()) {
                 return -1;
             }
-            if (alphabet[a[i]-'a'] == Integer.MAX_VALUE) {
-                alphabet[a[i]-'a'] = i;
+            int index = a[i] - 'a';
+            if (alphabet[index]  < Integer.MAX_VALUE) {
+                alphabet[index] = -1;
+                is.remove(index);
             }
-            if (alphabet[a[i]-'a']  < Integer.MAX_VALUE) {
-                alphabet[a[i]-'a'] = -1;
-                is.remove(alphabet[a[i]]);
+            if (alphabet[index] == Integer.MAX_VALUE) {
+                alphabet[index] = i;
             }
         }
 
@@ -39,6 +39,10 @@ public class FirstUniqueCharacters387 {
                 }
             }
         }
-        return minimum;
+        if (minimum < Integer.MAX_VALUE) {
+            return minimum;
+        } else {
+            return -1;
+        }
     }
 }
