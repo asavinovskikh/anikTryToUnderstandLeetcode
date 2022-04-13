@@ -5,6 +5,50 @@ import java.util.*;
 public class PermutationInString567 {
 
     public static boolean permutation(String s1, String s2) {
+        int [] as1 = new int [26];
+        int [] curr = new int[26];
+        char [] cv1 = s1.toCharArray();
+        char [] cv2 = s2.toCharArray();
+
+        int l = cv1.length;
+        int n = cv2.length;
+
+        if (l > n) {
+            return false;
+        }
+
+        for(int i = 0; i < l; i++) {
+            as1[cv1[i] - 'a']++;
+        }
+
+        for(int i = 0; i < l; i++) {
+            curr[cv2[i] - 'a']++;
+        }
+        if (twoEq(as1, curr)){
+            return true;
+        }
+
+        for(int i = 0; i < n-l; i++) {
+            curr[cv2[i]-'a']--;
+            curr[cv2[i+l]-'a']++;
+
+            if (twoEq(as1, curr)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean twoEq(int[] as1,int[] curr) {
+        for(int i = 0; i < 26; i++) {
+            if(as1[i]!=curr[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static boolean permutationOld(String s1, String s2) {
         int [] a = new int[26];
         //we want first string as bigger than another
         char[] bigString = s1.toCharArray();
