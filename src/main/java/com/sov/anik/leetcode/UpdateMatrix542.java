@@ -1,6 +1,10 @@
 package com.sov.anik.leetcode;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 import static java.lang.Integer.max;
+import static java.lang.Integer.min;
 
 public class UpdateMatrix542 {
 //Given an m x n binary matrix mat,
@@ -8,6 +12,7 @@ public class UpdateMatrix542 {
 //The distance between two adjacent cells is 1
 
     public static int[][] updateMatrix(int[][] mat) {
+
         //return updateSBSMatrix(mat);
         return updateMatrixFrom0ToN(mat);
     }
@@ -15,29 +20,63 @@ public class UpdateMatrix542 {
     public static int[][] updateMatrixFrom0ToN(int[][] mat) {
         int maxH = mat.length;
         int maxV = mat[0].length;
+        int [][] visited = new int [maxH][maxV];
+
+        Queue<int[]> queue = new LinkedList<>();
         for (int i = 0; i < maxH; i++) {
             for (int j = 0; j < maxV; j++) {
+
                 if (mat[i][j] == 0) {
-                    if (i+1 < maxH) {
-                        if (mat[i+1][j] > 0) {
-                            mat[i+1][j] = -1;
+                    queue.offer(new int[] {i, j});
+                    visited[i][j] = 1;
+                }
+            }
+        }
+
+        int length = 0;
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            length++;
+            for (int k = 0; k < size; k++) {
+                int [] zero = queue.poll();
+                int i = zero[0];
+                int j = zero[1];
+
+                if (i+1 < maxH) {
+                        if(visited[i+1][j] == 0) {
+                            mat[i+1][j] = min(length, mat[i][j]+1);
+                            queue.offer(new int [] {i+1, j});
+                        } else {
+                            mat[i+1][j] = min(length, mat[i+1][j]);
                         }
-                    }
-                    if (i-1 > 0) {
-                        if (mat[i-1][j] > 0) {
-                            mat[i-1][j] = -1;
+                        visited[i+1][j] = 1;
+                }
+                if (i-1 >= 0) {
+                        if(visited[i-1][j] == 0) {
+                            mat[i-1][j] = min(length, mat[i][j]+1);
+                            queue.offer(new int [] {i-1, j});
+                        } else {
+                            mat[i-1][j] = min(length, mat[i-1][j]);
                         }
-                    }
-                    if (j+1 < maxV) {
-                        if (mat[i][j+1] > 0) {
-                            mat[i][j+1] = -1;
+                        visited[i-1][j] = 1;
+                }
+                if (j+1 < maxV ) {
+                        if(visited[i][j+1] == 0) {
+                            mat[i][j+1] = min(length, mat[i][j]+1);
+                            queue.offer(new int [] {i, j+1});
+                        } else {
+                            mat[i][j+1] = min(length, mat[i][j+1]);
                         }
-                    }
-                    if (j-1 < maxV) {
-                        if (mat[i][j-1] > 0) {
-                            mat[i][j-1] = -1;
+                        visited[i][j+1] = 1;
+                }
+                if (j-1 >= 0) {
+                        if (visited[i][j-1] == 0) {
+                            mat[i][j - 1] = min(length, mat[i][j]+1);
+                            queue.offer(new int [] {i, j-1});
+                        } else {
+                            mat[i][j - 1] = min(length, mat[i][j-1]);
                         }
-                    }
+                        visited[i][j-1] = 1;
                 }
             }
         }

@@ -6,6 +6,7 @@ import static com.sov.anik.leetcode.FloodFill733.printMatrix;
 import static com.sov.anik.leetcode.UpdateMatrix542.updateMatrix;
 
 class UpdateMatrix542Test {
+    //todo add this test
     @Test
     public void updateMatrixTest() {
         int [][] a = new int [][]{ {0,0,0}, {0,1,0}};
@@ -20,6 +21,16 @@ class UpdateMatrix542Test {
         printMatrix(a);
         int [][] b = updateMatrix(a);;
         printMatrix(b);
+    }
+
+    @Test
+    public void update4MatrixTest() {
+        int [][] a = new int [][]{ {0,1,0,1,1},{1,1,0,0,1},{0,0,0,1,0},{1,0,1,1,1},{1,0,0,0,1}};
+        printMatrix(a);
+        int [][] b = updateMatrix(a);
+        printMatrix(b);
+        int [][] c = new int [][]{ {0,1,0,1,2},{1,1,0,0,1},{0,0,0,1,0},{1,0,1,1,1},{1,0,0,0,1}};
+        //assertEqualsForMatrix(b,c);
     }
 
     @Test
