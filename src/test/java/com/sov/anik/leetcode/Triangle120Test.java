@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static com.sov.anik.leetcode.Triangle120.minimumTotal;
+import static com.sov.anik.leetcode.Triangle120.minimumm;
 import static org.junit.Assert.assertEquals;
 
 class Triangle120Test {
@@ -92,7 +93,7 @@ class Triangle120Test {
         triangle.add(12, m);
 
 
-        assertEquals(-33, minimumTotal(triangle));
+        assertEquals(-33, minimumm(triangle));
     }
 
 }

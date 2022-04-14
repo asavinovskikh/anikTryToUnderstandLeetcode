@@ -9,6 +9,22 @@ import java.util.stream.IntStream;
 import static java.util.Collections.min;
 
 public class Triangle120 {
+
+    public static int minimumm(List<List<Integer>> triangle) {
+        int level = triangle.size();
+        int result = 0;
+        //for (int i = level;  i > 1; i--) {
+        //    for(int j = 0; j < massOfResult; j++) {
+
+        int[] resultation = new int[level+1];
+        for(int i=level-1; i >= 0; i--){
+            for(int j=0;j<triangle.get(i).size();j++){
+                resultation[j] = Math.min(resultation[j],resultation[j+1])+triangle.get(i).get(j);
+            }
+        }
+        return resultation[0];
+    }
+
     public static int minimumTotal(List<List<Integer>> triangle) {
         int result = 0;
         int level = triangle.size();
@@ -36,17 +52,13 @@ public class Triangle120 {
             System.out.println(Arrays.toString(resultationIndex.toArray()));
             System.out.println(Arrays.toString(triangle.get(i-2).toArray()));
             System.out.println(Arrays.toString(resultation.toArray()));
-//                System.out.println(resultation.get(0) + " "
-//                + resultation.get(1) + " "
-//                + resultation.get(2) + " "
-//                + resultation.get(3));
         }
         return min(resultation);
     }
 
     public static int minAmount(int index, List<Integer> currentList, List<Integer> listIndex) {
         int previousIndex = listIndex.get(index);
-        if (currentList.size() <= previousIndex) {
+        if (currentList.size() < previousIndex) {
             listIndex.set(index, currentList.size()-1);
             return currentList.get(currentList.size() - 1);
         }
