@@ -9,6 +9,18 @@ public class CamelCase {
         return Arrays.stream(c).map(CamelCase::transformToFirstUp).collect(Collectors.joining());
     }
 
+    public static String camelDiffCase(String input) {
+        return input.chars().mapToObj(item -> tra((char)item)).collect(Collectors.joining());
+    }
+
+    public static String tra(char item) {
+        if (Character.isUpperCase(item))
+        {return  (" "+ item).toLowerCase();}
+        else {
+            return String.valueOf(item);
+        }
+    }
+
     public static String transformToFirstUp(String s) {
         if (s == null) {
             return "";
