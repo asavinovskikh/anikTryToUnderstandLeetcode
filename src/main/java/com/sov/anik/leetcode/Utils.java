@@ -1,5 +1,7 @@
 package com.sov.anik.leetcode;
 
+import java.util.List;
+
 public class Utils {
     public static void printMatrix(int[][] image) {
         int maxH = image.length;
@@ -14,6 +16,13 @@ public class Utils {
 
     }
 
-    //полезно итерироваться по всем 4м сторонам
+    //useful for iterate for all 4 sides
     public int[][] dirs = new int[][]{{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+
+    public <T> void printList(List<T> list){
+        for (T it: list) {
+            System.out.print("" + it.toString() + " ");
+        }
+        System.out.println("\n");
+    }
 }
