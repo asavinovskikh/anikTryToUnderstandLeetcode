@@ -1,4 +1,4 @@
-package com.sov.anik.leetcode2;
+package com.sov.anik.euler;
 
 public class EulerFibo2 {
 
