@@ -15,9 +15,9 @@ public class FirstFoodCalories {
 
     public int getMax() throws IOException {
 
-        List<Integer> list = new ArrayList<>();
-        int max = 0;
-        BufferedReader reader = new BufferedReader(new FileReader("D:\\Kaggle\\input.txt"));
+            List<Integer> list = new ArrayList<>();
+            int max = 0;
+            BufferedReader reader = new BufferedReader(new FileReader("D:\\Kaggle\\input.txt"));
 //
 //        String currentLine = reader.readLine();
 //        reader.close();
