@@ -1,6 +1,7 @@
 package com.sov.anik.leetcode;
 
 import java.util.List;
+import java.util.Map;
 
 public class Utils {
     public static void printMatrix(int[][] image) {
@@ -19,11 +20,27 @@ public class Utils {
     //useful for iterate for all 4 sides
     public int[][] dirs = new int[][]{{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
 
+    public static void printMap ( Map <Integer, Integer> mapa) {
+        mapa.entrySet().forEach(it -> System.out.println(it.getKey() + " " + it.getValue()));
+    }
+
+    public static void printMapList ( Map <Integer, List<Integer>> mapa) {
+        mapa.entrySet().forEach(it -> System.out.println(it.getKey() + " " + Utils.List2String(it.getValue())));
+    }
+
     public <T> void printList(List<T> list){
         for (T it: list) {
             System.out.print("" + it.toString() + " ");
         }
         System.out.println("\n");
+    }
+
+    public static String List2String(List<Integer> list) {
+        StringBuilder sb = new StringBuilder();
+        for(Integer l : list) {
+            sb.append(l + " ");
+        }
+        return sb.toString();
     }
 
 
